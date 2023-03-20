@@ -1,0 +1,37 @@
+kind: BuildConfig
+apiVersion: build.openshift.io/v1
+metadata:
+  name: nginx-example
+  labels:
+    app: nginx-example
+    app.openshift.io/runtime: nginx
+    app.openshift.io/runtime-version: ubi9-120
+spec:
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: 'ubi9/nginx-120'
+  source:
+    type: Git
+    git:
+      uri: 'https://github.com/redhat-partner-ecosystem/openshift-skunkworks.git'
+    contextDir: examples/nginx
+  triggers:
+    - type: Generic
+      generic:
+        secretReference:
+          name: nginx-example-generic-webhook-secret
+    - type: ImageChange
+      imageChange: {}
+    - type: ConfigChange
+  output:
+    to:
+      kind: ImageStreamTag
+      name: 'nginx-example:latest'
+  resources: {}
+  successfulBuildsHistoryLimit: 5
+  failedBuildsHistoryLimit: 5
+  runPolicy: Serial

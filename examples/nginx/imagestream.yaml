@@ -1,0 +1,11 @@
+kind: ImageStream
+apiVersion: image.openshift.io/v1
+metadata:
+  name: nginx-example
+  labels:
+    app: nginx-example
+    app.openshift.io/runtime: nginx
+    app.openshift.io/runtime-version: ubi9-120
+spec:
+  lookupPolicy:
+    local: false
