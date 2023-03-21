@@ -1,0 +1,15 @@
+apiVersion: gpte.opentlc.com/v1
+kind: Gitea
+metadata:
+  name: repository
+  namespace: devspaces
+spec:
+  giteaImageTag: latest
+  giteaSsl: true
+  giteaUserNumber: 10
+  giteaVolumeSize: 4Gi
+  postgresqlVolumeSize: 4Gi
+  giteaAdminUser: admin
+  giteaAdminPassword: ""
+  giteaAdminPasswordLength: 32
+  giteaAdminEmail: admin@example.com
