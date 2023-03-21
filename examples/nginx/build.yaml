@@ -17,9 +17,7 @@ spec:
   source:
     type: Git
     git:
-      #uri: 'https://github.com/sclorg/nginx-container.git'
       uri: 'https://github.com/redhat-partner-ecosystem/openshift-skunkworks.git'
-    #contextDir: 'examples/1.20/test-app'
     contextDir: 'examples/nginx/public'
   triggers:
     - type: Generic
