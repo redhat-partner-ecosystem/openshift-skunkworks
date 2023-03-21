@@ -6,6 +6,9 @@ namespaces:
 	oc new-project ${DEVSPACES_NAMESPACE}
 	oc new-project ${BUILD_NAMESPACE}
 
+.PHONY: install-operators
+install: install-gitops-operators install-devspaces-operators
+
 .PHONY: install-gitops-operators
 install-gitops-operators:
 	oc apply -f operators/openshift-pipeline-operator.yaml
@@ -28,5 +31,3 @@ config-roles:
 		system:serviceaccount:${BUILD_NAMESPACE}:builder \
 		--namespace=openshift
 
-.PHONY: install
-install: namespaces install-gitops-operators install-devspaces-operators config-devspaces
