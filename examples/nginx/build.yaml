@@ -13,12 +13,14 @@ spec:
       from:
         kind: ImageStreamTag
         namespace: openshift
-        name: 'ubi9/nginx-120'
+        name: 'nginx:1.20-ubi9'
   source:
     type: Git
     git:
+      #uri: 'https://github.com/sclorg/nginx-container.git'
       uri: 'https://github.com/redhat-partner-ecosystem/openshift-skunkworks.git'
-    contextDir: examples/nginx
+    #contextDir: 'examples/1.20/test-app'
+    contextDir: 'examples/nginx/public'
   triggers:
     - type: Generic
       generic:

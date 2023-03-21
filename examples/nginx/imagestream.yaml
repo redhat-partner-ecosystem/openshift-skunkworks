@@ -5,7 +5,7 @@ metadata:
   labels:
     app: nginx-example
     app.openshift.io/runtime: nginx
-    app.openshift.io/runtime-version: ubi9-120
+    app.openshift.io/runtime-version: 1.20-ubi9
 spec:
   lookupPolicy:
     local: false
