@@ -1,7 +1,7 @@
 apiVersion: gpte.opentlc.com/v1
 kind: Gitea
 metadata:
-  name: repository
+  name: gitea
   namespace: devspaces
 spec:
   giteaImageTag: latest

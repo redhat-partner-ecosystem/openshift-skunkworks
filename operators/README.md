@@ -1,6 +1,6 @@
 # Installation
 
-## Install the GitOps and Pipelines operators
+## Install the Red Hat GitOps and Red Hat Pipelines operator
 
 Subscribe to the operators:
 
@@ -23,24 +23,24 @@ Install the catalog source:
 oc apply -f https://raw.githubusercontent.com/redhat-gpte-devopsautomation/gitea-operator/master/catalog_source.yaml
 ```
 
-Subscribe to the operators:
+Subscribe to the operator and create a new instance:
 
 ```shell
+oc new-project devspaces
+
 oc apply -f operators/gitea-operator.yaml
 oc apply -f operators/gitea-instance.yaml
 ```
 
-## Install Red
-That's all ...
+## Install the Red Hat Dev Spaces operator
 
-
-## Usefull commands
+Subscribe to the operator and create a new instance:
 
 ```shell
-# list installed operators
-oc get csv
+oc new-project devspaces
 
-# list available operators
-oc get packagemanifests -n openshift-marketplace
-
+oc apply -f operators/openshift-devspaces-operator.yaml
+oc apply -f operators/openshift-devspaces-instance.yaml
 ```
+
+That's all ...
