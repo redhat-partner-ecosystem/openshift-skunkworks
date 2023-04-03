@@ -19,8 +19,9 @@ var (
 
 func init() {
 
-	clientID := env.GetString("client_id", "")
-	groupID := env.GetString("group_id", "")
+	clientID := env.GetString("client_id", "kafka-listener-svc")
+	groupID := env.GetString("group_id", "kafka-listener")
+	autoOffset := env.GetString("auto_offset", "end") // smallest, earliest, beginning, largest, latest, end
 
 	// kafka setup
 	kafkaService := env.GetString("kafka_service", "")
@@ -36,7 +37,7 @@ func init() {
 		"client.id":               clientID,
 		"group.id":                groupID,
 		"connections.max.idle.ms": 0,
-		"auto.offset.reset":       "earliest",
+		"auto.offset.reset":       autoOffset,
 		"broker.address.family":   "v4",
 	})
 	if err != nil {
@@ -60,7 +61,7 @@ func init() {
 
 func main() {
 
-	clientID := env.GetString("client_id", "")
+	clientID := env.GetString("client_id", "kafka-listener-svc")
 	sourceTopic := env.GetString("source_topic", "")
 
 	// metrics collectors
@@ -72,7 +73,7 @@ func main() {
 	// create a responder for delivery notifications
 	evts := make(chan kafka.Event, 1000) // FIXME not sure if such a number is needed ...
 	go func() {
-		fmt.Printf(" --> %s: listening for delivery events\n", clientID)
+		fmt.Printf(" --> %s: listening for events\n", clientID)
 		for {
 			e := <-evts
 
