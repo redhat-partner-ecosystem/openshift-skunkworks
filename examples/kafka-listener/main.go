@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"strings"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/prometheus/client_golang/prometheus"
@@ -86,18 +87,20 @@ func main() {
 		}
 	}()
 
-	// subscriber
-	err := kc.SubscribeTopics([]string{sourceTopic}, nil)
+	// subscribe
+	err := kc.SubscribeTopics(strings.Split(sourceTopic, ","), nil)
 	if err != nil {
 		panic(err)
 	}
 
-	fmt.Printf(" --> %s: listening on topic '%s'\n", clientID, sourceTopic)
+	fmt.Printf(" --> %s: listening on topic(s) '%s'\n", clientID, sourceTopic)
 
 	for {
 		msg, err := kc.ReadMessage(-1)
+
 		if err == nil {
-			fmt.Printf(" ---> message on %s: %s\n", msg.TopicPartition, string(msg.Value))
+			//fmt.Printf("%s: %s\n", msg.TopicPartition, string(msg.Value))
+			fmt.Printf("%s: %s\n", msg.TopicPartition, msg.String())
 
 			/*
 				// back to a json string
