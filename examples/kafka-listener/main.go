@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"strings"
+	"time"
 
 	"github.com/confluentinc/confluent-kafka-go/kafka"
 	"github.com/prometheus/client_golang/prometheus"
@@ -99,8 +100,7 @@ func main() {
 		msg, err := kc.ReadMessage(-1)
 
 		if err == nil {
-			//fmt.Printf("%s: %s\n", msg.TopicPartition, string(msg.Value))
-			fmt.Printf("%s: %s\n", msg.TopicPartition, msg.String())
+			fmt.Printf("%s,%s: %s\n", msg.Timestamp.Format(time.RFC3339), msg.TopicPartition, string(msg.Value))
 
 			/*
 				// back to a json string
