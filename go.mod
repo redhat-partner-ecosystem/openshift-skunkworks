@@ -1,4 +1,4 @@
-module github.com/redhat-capgemini-exchange/openshift-skunkworks
+module github.com/redhat-partner-ecosystem/openshift-skunkworks
 
 go 1.16
 

@@ -12,7 +12,7 @@ items:
       source:
         git:
           ref: develop
-          uri: "https://github.com/redhat-capgemini-exchange/openshift-skunkworks"
+          uri: "https://github.com/redhat-partner-ecosystem/openshift-skunkworks"
         contextDir: examples/golang_custom
         type: Git
       strategy:

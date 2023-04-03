@@ -14,7 +14,7 @@ items:
       source:
         git:
           ref: develop
-          uri: "https://github.com/redhat-capgemini-exchange/openshift-skunkworks"
+          uri: "https://github.com/redhat-partner-ecosystem/openshift-skunkworks"
         type: Git
       strategy:
         type: Source

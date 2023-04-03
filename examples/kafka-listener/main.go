@@ -9,7 +9,7 @@ import (
 
 	"github.com/txsvc/stdlib/v2/env"
 
-	"github.com/redhat-capgemini-exchange/openshift-skunkworks/internal"
+	"github.com/redhat-partner-ecosystem/openshift-skunkworks/internal"
 )
 
 var (
