@@ -11,7 +11,7 @@ items:
     spec:
       source:
         git:
-          ref: develop
+          ref: main
           uri: "https://github.com/redhat-partner-ecosystem/openshift-skunkworks"
         contextDir: examples/golang_custom
         type: Git
