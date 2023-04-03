@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+echo "CUSTOM ASSEMBLE"
+
+pushd /tmp/src
+
+echo "Assembling GOPATH"
+
+export GOPATH=`realpath $HOME/go`
+
+mkdir -p $GOPATH/src/$IMPORT_URL
+mv /tmp/src/* $GOPATH/src
+
+echo "Building"
+
+cd $GOPATH/src && go get -v -t -d ./...
+
+cd $GOPATH/src/$BUILD_DIR && GOOS=linux GOARCH=amd64 go build -o app $APP_FILE && chmod +x app && mv app /opt/app-root/app
+
+popd
+
+exit

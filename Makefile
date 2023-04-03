@@ -7,7 +7,7 @@ namespaces:
 	oc new-project ${BUILD_NAMESPACE}
 
 .PHONY: install-operators
-install: install-gitops-operators install-devspaces-operators
+install-operators: install-gitops-operators install-devspaces-operators
 
 .PHONY: install-gitops-operators
 install-gitops-operators:
