@@ -19,8 +19,8 @@ var (
 
 func init() {
 
-	clientID := env.GetString("client_id", "case-svc")
-	groupID := env.GetString("group_id", "fsi-fraud-detection")
+	clientID := env.GetString("client_id", "")
+	groupID := env.GetString("group_id", "")
 
 	// kafka setup
 	kafkaService := env.GetString("kafka_service", "")
@@ -60,8 +60,8 @@ func init() {
 
 func main() {
 
-	clientID := env.GetString("client_id", "case-svc")
-	sourceTopic := env.GetString("source_topic", "tx-fraud")
+	clientID := env.GetString("client_id", "")
+	sourceTopic := env.GetString("source_topic", "")
 
 	// metrics collectors
 	opsTxProcessed := promauto.NewCounter(prometheus.CounterOpts{
