@@ -2,8 +2,8 @@ FROM registry.access.redhat.com/ubi8/s2i-base:latest
 
 ENV NAME=golang \
     GO_MAJOR_VERSION=1 \
-    GO_MINOR_VERSION=16 \
-    GO_PATCH_VERSION=12 \
+    GO_MINOR_VERSION=18 \
+    GO_PATCH_VERSION=9 \
     CONTAINER_NAME="rhel8/go-toolset" \
     DATA_ROOT=/opt/app-root/data \
     APP_FILE="main.go"

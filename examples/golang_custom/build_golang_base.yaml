@@ -22,7 +22,7 @@ items:
       output:
         to:
           kind: ImageStreamTag
-          name: golang-base:1.16.12
+          name: golang-base:1.18
       triggers:
         - type: ImageChange
           imageChange: {}
