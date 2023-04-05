@@ -4,7 +4,7 @@ items:
   - kind: BuildConfig
     apiVersion: build.openshift.io/v1
     metadata:
-      name: golang-base
+      name: golang-s2i
       labels:
         app-owner: openshift-skunkworks
         app.openshift.io/runtime: golang

@@ -3,7 +3,7 @@ FROM registry.access.redhat.com/ubi8/s2i-base:1-429
 ENV NAME=golang \
     GO_MAJOR_VERSION=1 \
     GO_MINOR_VERSION=18 \
-    GO_PATCH_VERSION=9 \
+    GO_PATCH_VERSION=10 \
     CONTAINER_NAME="rhel8/go-toolset" \
     DATA_ROOT=/opt/app-root/data \
     APP_FILE="main.go" \
