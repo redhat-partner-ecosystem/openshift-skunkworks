@@ -13,7 +13,7 @@ items:
         git:
           ref: main
           uri: "https://github.com/redhat-partner-ecosystem/openshift-skunkworks"
-        contextDir: examples/golang_custom
+        contextDir: images/golang_s2i
         type: Git
       strategy:
         type: Docker
@@ -36,4 +36,4 @@ items:
         app-owner: openshift-skunkworks
         app.openshift.io/runtime: golang
       annotations:
-        description: golang-base builder image
+        description: golang-base s2i builder base image

@@ -1,0 +1,24 @@
+#!/bin/bash
+
+set -e
+
+pushd /tmp/src
+
+echo "--> Assembling GOPATH"
+
+export GOPATH=`realpath $HOME/go`
+
+mkdir -p $GOPATH/src/$IMPORT_URL
+mv /tmp/src/* $GOPATH/src
+
+echo "--> Collecting the sources"
+
+cd $GOPATH/src && go get -v -t -d ./...
+
+echo "--> Building the code"
+
+cd $GOPATH/src/$BUILD_DIR && GOOS=$GOOS GOARCH=$GOARCH go build -o app $APP_FILE && chmod +x app && mv app /opt/app-root/app
+
+popd
+
+exit

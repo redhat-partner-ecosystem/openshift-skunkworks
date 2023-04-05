@@ -1,4 +1,4 @@
-FROM registry.access.redhat.com/ubi8/s2i-base:latest
+FROM registry.access.redhat.com/ubi8/s2i-base:1-429
 
 ENV NAME=golang \
     GO_MAJOR_VERSION=1 \
@@ -6,7 +6,10 @@ ENV NAME=golang \
     GO_PATCH_VERSION=9 \
     CONTAINER_NAME="rhel8/go-toolset" \
     DATA_ROOT=/opt/app-root/data \
-    APP_FILE="main.go"
+    APP_FILE="main.go" \
+    GOOS=linux \
+    GOARCH=amd64 \
+    PORT=8080
 
 # Define the VERSION environment variable in a separate step, so we can
 # re-use the GO_MAJOR_VERSION, GO_MINOR_VERSION and GO_PATCH_VERSION variables. 
@@ -41,7 +44,6 @@ RUN chown -R 1001:0 $STI_SCRIPTS_PATH && chown -R 1001:0 $APP_ROOT
 
 USER 1001
 EXPOSE 8080
-EXPOSE 2112
 
 # Set the default CMD to print the usage of the language image.
 CMD $STI_SCRIPTS_PATH/usage
